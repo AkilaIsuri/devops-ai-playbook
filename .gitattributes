@@ -1,0 +1,7 @@
+# Enforce LF line endings for shell scripts to prevent CRLF issues in Linux containers
+*.sh text eol=lf
+
+# Enforce LF for other files commonly executed in Linux environments
+*.yml text eol=lf
+*.yaml text eol=lf
+Dockerfile text eol=lf
