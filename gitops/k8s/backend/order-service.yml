@@ -19,7 +19,7 @@ spec:
           command: ['sh', '-c', 'until nc -z boutique-postgres 5432; do echo waiting for postgres; sleep 2; done']
       containers:
         - name: order-service
-          image: 003344631323.dkr.ecr.us-east-1.amazonaws.com/order-service:latest
+          image: 003344631323.dkr.ecr.us-east-1.amazonaws.com/order-service:9e628e554d79f1435ec1f23b32392c2bfe45e043
           ports:
             - containerPort: 3004
           env:
