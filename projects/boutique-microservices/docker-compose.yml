@@ -7,7 +7,6 @@ services:
       POSTGRES_DB: boutique_db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres123
-      POSTGRES_MULTIBYTE: auth_db,products_db,orders_db,users_db
     ports:
       - "5432:5432"
     volumes:

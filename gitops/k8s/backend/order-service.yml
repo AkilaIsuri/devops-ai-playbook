@@ -13,9 +13,13 @@ spec:
       labels:
         app: order-service
     spec:
+      initContainers:
+        - name: wait-for-postgres
+          image: busybox:1.35
+          command: ['sh', '-c', 'until nc -z boutique-postgres 5432; do echo waiting for postgres; sleep 2; done']
       containers:
         - name: order-service
-          image: <AWS_ACCOUNT_ID>.dkr.ecr.us-east-1.amazonaws.com/order-service:1ebec3729cd10fe1eeac6f0858fba58e2da07956
+          image: 003344631323.dkr.ecr.us-east-1.amazonaws.com/order-service:latest
           ports:
             - containerPort: 3004
           env:
@@ -32,6 +36,18 @@ spec:
               value: "http://auth:3002"
             - name: PRODUCT_SERVICE_URL
               value: "http://product-service:3003"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3004
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3004
+            initialDelaySeconds: 15
+            periodSeconds: 20
 
 ---
 

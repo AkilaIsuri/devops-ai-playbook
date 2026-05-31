@@ -27,6 +27,8 @@ spec:
                 secretKeyRef:
                   name: boutique-secrets
                   key: POSTGRES_PASSWORD
+            - name: POSTGRES_DB
+              value: postgres
             - name: PGDATA
               value: /var/lib/postgresql/data/pgdata
           volumeMounts:
