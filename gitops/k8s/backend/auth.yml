@@ -19,7 +19,7 @@ spec:
           command: ['sh', '-c', 'until nc -z boutique-postgres 5432; do echo waiting for postgres; sleep 2; done']
       containers:
         - name: auth
-          image: 003344631323.dkr.ecr.us-east-1.amazonaws.com/auth:9e628e554d79f1435ec1f23b32392c2bfe45e043
+          image: 141701955627.dkr.ecr.us-east-1.amazonaws.com/auth:9e628e554d79f1435ec1f23b32392c2bfe45e043
           ports:
             - containerPort: 3002
           env:
